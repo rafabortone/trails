@@ -1,0 +1,31 @@
+import Header from "../components/header";
+import bannerTop from '../images/banner-home.png'
+import Trails from '../components/trails';
+
+export default function Home() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+  
+  return (
+    <div className="home">
+      <Header />
+      <section className="home__top">
+        <div className="home__title">
+          <h1>zup</h1>
+          <h2>trails</h2>
+        </div>
+        <figure className="home__banner">
+          <img src={bannerTop} alt='arte digital mostrando três pessoas sobre um notebook gigante, colocando componentes na tela' />
+        </figure>
+      </section>
+      <section className="home__trails">
+        <Trails />
+      </section>
+    </div>
+  );
+}
