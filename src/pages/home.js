@@ -3,13 +3,6 @@ import bannerTop from '../images/banner-home.png'
 import Trails from '../components/trails';
 
 export default function Home() {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
   
   return (
     <div className="home">
