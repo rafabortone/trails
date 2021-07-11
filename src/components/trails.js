@@ -7,21 +7,28 @@ export default function Trails() {
   var settings = {
     dots: true,
     infinite: false,
-    variableWidth: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow:3,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 425,
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+          variableWidth:true,
+        }
+      }, 
+      {
+        breakpoint: 916,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: true,
           variableWidth:true,
-          dots: true
         }
-      }
-      
+      },
     ]
   };
 
