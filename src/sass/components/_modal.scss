@@ -14,10 +14,16 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding: 16px;
+    padding: 0px;
     img  {
-      width: 30px;
-      height: 30px;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+
+      @media (min-width: 1024px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -79,8 +85,13 @@
     h3 {
       color: $c-font-blue;
       font: {
-        size: 38px;
+        size: 22px;
+        weight: 700;
       };
+      margin: 0;
+      @media (min-width: 1024px) {
+        font-size: 28px;
+      }
     }
   }
 
