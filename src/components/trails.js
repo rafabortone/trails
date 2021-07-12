@@ -5,8 +5,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { TrailsListContext } from '../context/TrailsList';
 
 export default function Trails() {
-  const { 
-    trailsList, 
+  const {
+    trailsList,
     setTrailsList,
     setModalVisible,
     setTrail,
@@ -48,54 +48,62 @@ export default function Trails() {
     const response = await fetch(url + '/api/v1/trails/');
     const data = await response.json();
 
-    setTrailsList(data);
+    if(response.status == 200) {
+      setTrailsList(data);
+    } else {
+      console.log(response);
+    }
   }, []);
 
-  function handleOpenModal(trail) {
+  async function handleOpenModal(trail) {
     const grade = trail.grade[0]
 
-    fetch(url + '/api/v1/trails/'+grade.trailId+'/trails-grade/'+grade.id+'/courses')
-      .then(r => r.json())
-        .then(response => {
-        setGrade(response);
-      })
-      .catch(error => {
-        alert('Ocorreu um erro inesperado, por favor tente mais tarde');
-        console.error();
-      });
+    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/courses');
+    const data = await response.json();
 
-    setTrail(trail);
-    setModalVisible(true);
-    
+    if(response.status == 200) {
+      setGrade(data);
+      setTrail(trail);
+      setModalVisible(true);
+    } else {
+      alert('Ocorreu um erro inesperado, por favor tente mais tarde');
+      console.log(response);
+    }
+      
+
   };
 
   return (
-    <ul className="trails__list">
-      <Slider {...settings}>
-        {trailsList.map(trail => {
-          return (
-            <li className="trails__item" key={trail.id}>
-              <figure className="trails__item--image">
-                <img src={trail.image} />
-              </figure>
-              <article>
-                <h2 className="trails__item--title">
-                  {trail.name}
-                </h2>
-                <p className="trails__item--description">
-                  {trail.description}
-                </p>
-                <div className='trails__item--button'>
-                  <button 
-                    onClick={() => handleOpenModal(trail)}
-                  >detalhes</button>
-                </div>
-              </article>
-            </li>
-          );
-        })
-        }
-      </Slider>
-    </ul>
+    <>
+    {trailsList.length > 0 ?
+      <ul className="trails__list">
+        <Slider {...settings}>
+          {trailsList.map(trail => {
+            return (
+              <li className="trails__item" key={trail.id}>
+                <figure className="trails__item--image">
+                  <img src={trail.image} />
+                </figure>
+                <article>
+                  <h2 className="trails__item--title">
+                    {trail.name}
+                  </h2>
+                  <p className="trails__item--description">
+                    {trail.description}
+                  </p>
+                  <div className='trails__item--button'>
+                    <button
+                      onClick={() => handleOpenModal(trail)}
+                    >detalhes</button>
+                  </div>
+                </article>
+              </li>
+            );
+          })
+          }
+        </Slider>
+      </ul> : <h1>Carregando trilhas....</h1>
+    }
+    </>
   );
 }

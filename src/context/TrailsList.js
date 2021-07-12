@@ -7,6 +7,7 @@ const TrailsListProvider = ({children}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [trail, setTrail] = useState([]);
   const [grade, setGrade] = useState([]);
+  const [subscription, setSubscription] = useState([]);
 
 
   return (
@@ -19,7 +20,9 @@ const TrailsListProvider = ({children}) => {
         trail,
         setTrail,
         grade,
-        setGrade
+        setGrade,
+        subscription,
+        setSubscription
       }}
     >
       {children}

@@ -6,11 +6,22 @@ export default function Modal() {
     modalVisible, 
     setModalVisible,
     trail,
-    grade
+    grade,
+    subscription,
+
   } = useContext(TrailsListContext);
 
-  console.log(trail);
-  console.log(grade);
+  console.log(subscription);
+
+  function handleSubscription(trailId) {
+    if(subscription.includes(trailId)) {
+      alert('Você já esta inscrito nesta trilha');
+    } else {
+      subscription.push(trailId);
+      alert('Inscrição realizada com sucesso!');
+      setModalVisible(false);
+    }
+  }
   return (
     <>
     {modalVisible ? 
@@ -31,7 +42,9 @@ export default function Modal() {
               {trail.description}
             </p>
             <div className='modal__button'>
-              <button>inscrever-se</button>
+              <button
+                onClick={() => handleSubscription(trail.id)}
+              >inscrever-se</button>
             </div>
           </article>
           <nav className="modal__grade">
