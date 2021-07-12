@@ -59,7 +59,7 @@ export default function Trails() {
   async function handleOpenModal(trail) {
     const grade = trail.grade[0]
 
-    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/course');
+    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/courses');
     const data = await response.json();
 
     if(response.status == 200) {
