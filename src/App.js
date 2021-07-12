@@ -1,6 +1,6 @@
-import Modal from "./components/modal";
 import Home from "./pages/home";
 import TrailsListProvider from './context/TrailsList'
+import Modal from "./components/modal";
 
 function App() {
   
@@ -8,7 +8,9 @@ function App() {
     <main>
       <TrailsListProvider>
         <Home />
+        <Modal/>
       </TrailsListProvider>
+        
     </main>
   );
 }

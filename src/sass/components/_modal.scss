@@ -1,6 +1,8 @@
 .modal {
   background-color: rgba($c-black, $alpha: 0.55);
   position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -15,10 +17,11 @@
     max-width: 1240px;
     background-color: $c-white;
     padding: 16px 30px;
-    height: 80%;
+    height: 100%;
     @media (min-width:1024px) {
       padding: 28px 60px;
-      max-height: 615px;
+      height: auto;
+      max-height: 100%;
     }
    
     article {
@@ -35,24 +38,24 @@
       weight: 600;
     };
     line-height: 50px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     @media (min-width:1024px) {
-      font-size: 128px;
-      line-height: 156px;
-      margin-bottom: 18px;
+      font-size: 118px;
+      line-height: 125px;
+      margin-bottom: 8px;
     }
   }
 
   &__description {
     color: $c-black;
     font: {
-      size: 18px;
+      size: 14px;
       weight: normal;
     };
     line-height: 20px;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
     @media (min-width:1024px) {
-      font-size: 28px;
+      font-size: 22px;
       line-height: 32px;
     }
   }

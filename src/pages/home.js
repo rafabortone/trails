@@ -3,7 +3,6 @@ import bannerTop from '../images/banner-home.png'
 import Trails from '../components/trails';
 
 export default function Home() {
-  
   return (
     <div className="home">
       <Header />
