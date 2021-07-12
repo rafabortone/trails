@@ -90,3 +90,9 @@ button {
     border-radius: 20px;
   }
 }
+
+.swal2-actions{
+  .swal2-confirm {
+    background-color: $c-green!important;
+  }
+}

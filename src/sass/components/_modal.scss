@@ -10,6 +10,17 @@
   justify-content: center;
   padding: 0 16px;
 
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 16px;
+    img  {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -64,6 +75,13 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+
+    h3 {
+      color: $c-font-blue;
+      font: {
+        size: 38px;
+      };
+    }
   }
 
   &__grade {

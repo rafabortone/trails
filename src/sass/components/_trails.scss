@@ -1,7 +1,4 @@
 .trails {
-  &__list {
-   
-  }
 
   &__item {
     border-radius: 2px;
@@ -64,6 +61,11 @@
         size: 18px;
         weight: normal;
       };
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
       line-height: 22px;
       margin-bottom: 29px;
       max-width: 283px;

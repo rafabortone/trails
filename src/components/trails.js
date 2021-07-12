@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { useContext, useEffect, useState } from 'react';
 import { TrailsListContext } from '../context/TrailsList';
+import Swal from 'sweetalert2'
 
 export default function Trails() {
   const {
@@ -58,7 +59,7 @@ export default function Trails() {
   async function handleOpenModal(trail) {
     const grade = trail.grade[0]
 
-    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/courses');
+    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/course');
     const data = await response.json();
 
     if(response.status == 200) {
@@ -66,7 +67,11 @@ export default function Trails() {
       setTrail(trail);
       setModalVisible(true);
     } else {
-      alert('Ocorreu um erro inesperado, por favor tente mais tarde');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ocorreu um erro inesperado, por favor tente mais tarde',
+      })
       console.log(response);
     }
       
