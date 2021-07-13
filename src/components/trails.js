@@ -14,7 +14,7 @@ export default function Trails() {
     setGrade
   } = useContext(TrailsListContext);
 
-  const url = 'https://60e2ee6f9103bd0017b47673.mockapi.io';
+  const url = 'https://60e2ee6f9103bd0017b47673.mockapi.io/api/v1/trails/';
 
   var settings = {
     dots: true,
@@ -46,7 +46,7 @@ export default function Trails() {
   };
 
   useEffect(async () => {
-    const response = await fetch(url + '/api/v1/trails/');
+    const response = await fetch(url );
     const data = await response.json();
 
     if(response.status == 200) {
@@ -59,7 +59,7 @@ export default function Trails() {
   async function handleOpenModal(trail) {
     const grade = trail.grade[0]
 
-    const response = await fetch(url + '/api/v1/trails/' + grade.trailId + '/trails-grade/' + grade.id + '/courses');
+    const response = await fetch(url + grade.trailId + '/trails-grade/' + grade.id + '/courses');
     const data = await response.json();
 
     if(response.status == 200) {
@@ -81,7 +81,7 @@ export default function Trails() {
   return (
     <>
     {trailsList.length > 0 ?
-      <ul className="trails__list">
+      <ul className="trails__list" data-testid="trails-list">
         <Slider {...settings}>
           {trailsList.map(trail => {
             return (

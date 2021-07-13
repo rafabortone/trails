@@ -13,8 +13,6 @@ export default function Modal() {
 
   } = useContext(TrailsListContext);
 
-  console.log(subscription);
-
   function handleSubscription(trailId) {
 
     subscription.push(trailId);
@@ -29,19 +27,21 @@ export default function Modal() {
   return (
     <>
       {modalVisible ?
-        <div className="modal" >
-          <div className="modal__content">
+        <div className="modal" data-testeid="modal" tabindex="-1">
+          <div className="modal__content" aria-modal="true" id="dialog1" role="dialog" aria-labelledby="dialog1_label" aria-describedby="dialog1_desc" aria-hidden="true" >
             <div className="modal__close">
               <img 
                 src={IconClose} 
                 onClick={() => setModalVisible(false)}
+                alt="botão para fechar a caixa de dialogo"
+                id="dialog1_close"
               />
             </div>
             <article>
-              <h2 className="modal__title">
+              <h2 className="modal__title" id="dialog1_label">
                 {trail.name}
               </h2>
-              <p className="modal__description">
+              <p className="modal__description" id="dialog1_desc">
                 {trail.description}
               </p>
               <div className='modal__button'>
@@ -49,6 +49,7 @@ export default function Modal() {
                   <h3>Inscrito</h3> :
                   <button
                     onClick={() => handleSubscription(trail.id)}
+                    type="button"
                   >inscrever-se</button>
                 }
               </div>

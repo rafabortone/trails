@@ -5,7 +5,7 @@ import Modal from "./components/modal";
 function App() {
   
   return (
-    <main>
+    <main data-testid="main">
       <TrailsListProvider>
         <Home />
         <Modal/>
