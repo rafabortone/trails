@@ -1,6 +1,6 @@
 Lista trilha de cursos consumindo uma api, abre modal exibindo informações detalhadas de cada trilha. 
 
-- React, React hooks, Context api, Sass, Jest, 
+- React, React hooks, Context api, Sass, Jest, Interface responsiva
 
 Acesse: https://rafabortone.github.io/trails/ 
 
