@@ -1,15 +1,13 @@
 import Home from "./pages/home";
-import TrailsListProvider from './context/TrailsList'
-import Modal from "./components/modal";
+import AppContextProvider from './context/AppContext'
 
 function App() {
   
   return (
     <main data-testid="main">
-      <TrailsListProvider>
+      <AppContextProvider>
         <Home />
-        <Modal/>
-      </TrailsListProvider>
+      </AppContextProvider>
         
     </main>
   );

@@ -1,15 +1,15 @@
 import userIcon from '../icons/icon-user.svg'
-import { TrailsListContext } from '../context/TrailsList';
+import { AppContext } from '../context/AppContext';
 import { useContext } from 'react';
 
 export default function Header() {
-  const { subscription } = useContext(TrailsListContext);
+  const { subscription } = useContext(AppContext);
   
   return (
     <header>
       <article>
         <p>{'inscrições: '+ subscription.length}</p>
-        <img src={userIcon} />
+        <img src={userIcon} alt="user icon" />
       </article>
     </header>
   );

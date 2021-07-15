@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
-export const TrailsListContext = createContext();
+export const AppContext = createContext();
 
-const TrailsListProvider = ({children}) => {
+const AppContextProvider = ({children}) => {
   const[trailsList, setTrailsList] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [trail, setTrail] = useState([]);
@@ -11,7 +11,7 @@ const TrailsListProvider = ({children}) => {
 
 
   return (
-    <TrailsListContext.Provider 
+    <AppContext.Provider 
       value={{
         trailsList,
         setTrailsList,
@@ -26,8 +26,8 @@ const TrailsListProvider = ({children}) => {
       }}
     >
       {children}
-    </TrailsListContext.Provider>
+    </AppContext.Provider>
   );
 }
 
-export default TrailsListProvider;
+export default AppContextProvider;

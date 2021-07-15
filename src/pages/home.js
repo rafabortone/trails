@@ -1,10 +1,11 @@
 import Header from "../components/header";
 import bannerTop from '../images/banner-home.png'
 import Trails from '../components/trails';
+import Modal from "../components/modal";
 
 export default function Home() {
   return (
-    <div className="home">
+    <div className="home" aria-hidden="true">
       <Header />
       <section className="home__top">
         <div className="home__title">
@@ -18,6 +19,7 @@ export default function Home() {
       <section className="home__trails">
         <Trails />
       </section>
+      <Modal/>
     </div>
   );
 }

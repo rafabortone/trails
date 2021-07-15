@@ -1,8 +1,8 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useContext, useEffect, useState } from 'react';
-import { TrailsListContext } from '../context/TrailsList';
+import React, { useContext, useEffect } from 'react';
+import { AppContext } from '../context/AppContext';
 import Swal from 'sweetalert2'
 
 export default function Trails() {
@@ -12,7 +12,7 @@ export default function Trails() {
     setModalVisible,
     setTrail,
     setGrade
-  } = useContext(TrailsListContext);
+  } = useContext(AppContext);
 
   const url = 'https://60e2ee6f9103bd0017b47673.mockapi.io/api/v1/trails/';
 
@@ -45,16 +45,22 @@ export default function Trails() {
     ]
   };
 
-  useEffect(async () => {
-    const response = await fetch(url );
-    const data = await response.json();
-
-    if(response.status == 200) {
-      setTrailsList(data);
-    } else {
-      console.log(response);
+  useEffect(() => {
+    
+    async function getTrails() {
+      const response = await fetch(url );
+      const data = await response.json();
+      
+      if(response.status === 200) {
+        setTrailsList(data);
+      } else {
+        console.log(response);
+      }
     }
-  }, []);
+
+    getTrails();
+
+  }, [setTrailsList]);
 
   async function handleOpenModal(trail) {
     const grade = trail.grade[0]
@@ -62,7 +68,7 @@ export default function Trails() {
     const response = await fetch(url + grade.trailId + '/trails-grade/' + grade.id + '/courses');
     const data = await response.json();
 
-    if(response.status == 200) {
+    if(response.status === 200) {
       setGrade(data);
       setTrail(trail);
       setModalVisible(true);
@@ -87,7 +93,7 @@ export default function Trails() {
             return (
               <li className="trails__item" key={trail.id}>
                 <figure className="trails__item--image">
-                  <img src={trail.image} />
+                  <img src={trail.image} alt="trail background"/>
                 </figure>
                 <article>
                   <h2 className="trails__item--title">
